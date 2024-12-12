@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/github_activity'
+
+if ARGV.empty?
+  puts "Usage: ./bin/github-activity <username>"
+  puts "Example: ./bin/github-activity sulmanweb"
+  exit 1
+end
+
+begin
+  GitHubActivity.new(ARGV[0]).run
+rescue StandardError => e
+  puts "Error: #{e.message}"
+  exit 1
+end
